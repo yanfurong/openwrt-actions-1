@@ -43,11 +43,22 @@ jobs:
         REPO_URL: https://github.com/dingyasheng/openwrt-actions-1
       run: git clone --depth 1 $REPO_URL openwrt-config
       
-    - name: Update feeds
-      run: cd openwrt && ./scripts/feeds update -a
 
-    - name: Install feeds
-      run: cd openwrt && ./scripts/feeds install -a
+    - name: Load custom feeds
+      run: |
+          cd openwrt
+          sed -i 's/\"#src-git\"/\"src-git\"/g' ./feeds.conf.default
+          sed -i 's/192.168.1.1/192.168.2.55/g' package/base-files/files/bin/config_generate
+          sed -i 's/OpenWrt/HP GEN8/g' package/base-files/files/bin/config_generate
+          sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
+          ./scripts/feeds clean
+          ./scripts/feeds update -a
+          ./scripts/feeds install -a
+                    
+    - name: Install Luci for Clash
+      working-directory: ./openwrt
+      run: |
+          git clone https://github.com/frainzy1477/luci-app-clash openwrt/package
     
     - name: Custom configure file
       run: |
