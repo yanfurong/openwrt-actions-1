@@ -7,12 +7,20 @@
 #=================================================
 name:Wrt1900AC
 
-on:
-#  schedule:
-#    - cron: 0 20 * * *
+on: 
+  release:
+    types: [published]
+
   push:
     branches: 
       - master
+
+  #schedule:
+  #  - cron: 0 01 * * *
+  
+  #watch:
+  #  types: [started]
+
 
 jobs:
   build:
