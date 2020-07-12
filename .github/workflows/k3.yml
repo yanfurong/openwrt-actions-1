@@ -11,9 +11,9 @@ name: X64-1907
 on:
 #  schedule:
 #    - cron: 0 20 * * *
-#  push:
-#    branches: 
-#      - master
+  push:
+    branches: 
+      - master
 
 jobs:
   build:
@@ -94,7 +94,7 @@ jobs:
       run: |
           rm -rf ./artifact/
           mkdir -p ./artifact/
-          find openwrt/bin/targets/ -name "*squashfs*trx" | xargs -i mv -f {} ./artifact/
+          find openwrt/bin/targets/ -name "*k3-squashfs*trx" | xargs -i mv -f {} ./artifact/
 #          find openwrt/bin/targets/ -name "*combined*img*" | xargs -i mv -f {} ./artifact/
 
     - name: Upload artifact
