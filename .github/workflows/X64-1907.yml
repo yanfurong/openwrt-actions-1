@@ -57,12 +57,10 @@ jobs:
           ./scripts/feeds install -a
           
                    
-        
-    - name: Clone Config
-      env: 
-        REPO_URL: https://github.com/dingyasheng/openwrt-actions-1
-        REPO_BRANCH: master
-      run: git clone --depth 1 $REPO_URL openwrt/update
+    - name: Copy actiongen8 file Luci
+      working-directory: ./openwrt
+      run: |
+          git clone https://github.com/dingyasheng/lean-compile.git openwrt/update
           cd openwrt
           chmod +x update/actiongen8.sh
           sh -x update/actiongen8.sh
