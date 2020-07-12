@@ -94,7 +94,6 @@ jobs:
       run: |
           rm -rf ./artifact/
           mkdir -p ./artifact/
-#          find openwrt/bin/targets/ -name "*sysupgrade*bin*" | xargs -i mv -f {} ./artifact/
           find openwrt/bin/targets/ -name "*v2-squashfs-factory*img*" | xargs -i mv -f {} ./artifact/
 
     - name: Upload artifact
