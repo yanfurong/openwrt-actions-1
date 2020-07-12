@@ -12,9 +12,9 @@ on:
   release:
     types: [published]
 
-  #push:
-  #  branches: 
-  #    - master
+  push:
+    branches: 
+      - master
 
   #schedule:
   #  - cron: 0 01 * * *
@@ -64,8 +64,8 @@ jobs:
     - name: Copy actiongen8 file Luci
       working-directory: ./openwrt
       run: |
-          git clone https://github.com/dingyasheng/lean-compile.git openwrt/update
           cd openwrt
+          git clone https://github.com/dingyasheng/lean-compile.git update
           chmod +x update/actiongen8.sh
           sh -x update/actiongen8.sh
           
