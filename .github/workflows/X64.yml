@@ -61,13 +61,13 @@ jobs:
           ./scripts/feeds install -a
           
                    
-    - name: Copy actiongen8 file Luci
-      working-directory: ./openwrt
-      run: |
-          cd openwrt
-          git clone https://github.com/dingyasheng/lean-compile.git update
-          chmod +x update/actiongen8.sh
-          sh -x update/actiongen8.sh
+#    - name: Copy actiongen8 file Luci
+#      working-directory: ./openwrt
+#      run: |
+#          cd openwrt
+#          git clone https://github.com/dingyasheng/lean-compile.git update
+#          chmod +x update/actiongen8.sh
+#          sh -x update/actiongen8.sh
           
     - name: Costom configure file
       run: |
